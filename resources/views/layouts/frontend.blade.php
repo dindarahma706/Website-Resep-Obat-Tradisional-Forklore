@@ -61,6 +61,9 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                       @if (Auth::user()->role_as == '1')
                       <li>
+                        <a href="{{ url('/users') }}" class="dropdown-item">Acc User</a>
+                      </li>
+                      <li>
                         <a href="{{ url('/add-resep') }}" class="dropdown-item">Tambahkan Resep</a>
                       </li>  
                       <li>
