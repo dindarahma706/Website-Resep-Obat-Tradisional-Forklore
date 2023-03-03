@@ -33,6 +33,7 @@ Route::middleware( ['auth','auth'])->group(function () {
 
 Route::middleware( ['auth','isAdmin'])->group(function () {
     route::get('resep', [frontendController::class, 'Resep']);
+    route::get('users', [frontendController::class, 'Users']);
     route::get('add-resep', [frontendController::class, 'Add']);
     route::post('insert-resep', [frontendController::class, 'Insert']);
     route::get('edit-resep/{id}', [frontendController::class, 'Edit']);
