@@ -10,6 +10,9 @@ class frontendController extends Controller
     function Index(){
         return view('index');
     }
+    function Form(){
+        return view('form');
+    }
     public function Resep(){
         $resep = Resep::all();
         return view('admin.resep', compact('resep'));
@@ -66,4 +69,6 @@ class frontendController extends Controller
         $resep->delete();
         return redirect('/resep')->with('status', 'Resep Deleted Succesfully');
     }
+
+    
 }

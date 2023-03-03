@@ -25,4 +25,8 @@ class penyakitController extends Controller
         
         return view('result', ['resep' => $resep] )->with("status", "Resep Obat Has Found");
     }
+    public function History(){
+        $pasien = Pasien::all();
+        return view('history', ['pasien' => $pasien] )->with("status", "Resep Obat Has Found");
+    }
 }
