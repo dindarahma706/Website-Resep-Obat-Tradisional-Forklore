@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Resep;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -12,6 +13,10 @@ class frontendController extends Controller
     }
     function Form(){
         return view('form');
+    }
+    function Users(){
+        $user = User::all();
+        return view('admin.users', compact('user'));
     }
     public function Resep(){
         $resep = Resep::all();
