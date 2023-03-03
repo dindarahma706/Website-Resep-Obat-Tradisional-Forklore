@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('Nama');
             $table->tinyInteger('Umur');
             $table->string('Gender');
+            $table->tinyInteger('Role_as');
             $table->string('Penyakit');
             $table->timestamps();
         });

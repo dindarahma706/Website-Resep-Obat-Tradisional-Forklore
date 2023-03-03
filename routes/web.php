@@ -23,7 +23,7 @@ route::post('result', [penyakitController::class, 'Insert']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/login', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 Route::middleware( ['auth','isAdmin'])->group(function () {
