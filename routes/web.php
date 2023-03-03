@@ -18,13 +18,18 @@ use App\Http\Controllers\penyakitController;
 
 Route::get('/', [frontendController::class, 'Index']);
 //route::get('result', [penyakitController::class, 'Result']);
-route::post('result', [penyakitController::class, 'Insert']);
+
 
 
 Auth::routes();
 
-Route::get('/login', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::middleware( ['auth','auth'])->group(function () {
+    route::get('form', [frontendController::class, 'Form']);
+    route::post('result', [penyakitController::class, 'Insert']);
+    route::get('history', [penyakitController::class, 'History']);
+});
 
 Route::middleware( ['auth','isAdmin'])->group(function () {
     route::get('resep', [frontendController::class, 'Resep']);
