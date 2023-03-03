@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('title')
-    Hasil
+    History
 @endsection
 
 @section('content')
@@ -10,27 +10,28 @@
         <div class="col-md-12">
             <div class="card shadow">
                 <div class="card-header">
-                    <h1>Resep Obat</h1>
+                    <h1>History</h1>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Nama Tumbuhan</th>
-                                <th>Gambar</th>
+                                <th>ID</th>
+                                <th>Nama Pasien</th>
+                                <th>Umur</th>
+                                <th>Gender</th>
                                 <th>Penyakit</th>
-                                <th>Deskripsi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($resep as $item)
+                            @foreach($pasien as $item)
                             <tr>
-                                <td>{{ $item->Nama_Tumbuhan }}</td>
-                                <td>
-                                    <img class="img" src="{{ asset('assets/uploads/resep/'.$item->Image) }}" alt="image here..">    
-                                </td>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->Nama }}</td>
+                                <td>{{ $item->Umur }}</td>
+                                <td>{{ $item->Gender }}</td>
                                 <td>{{ $item->Penyakit }}</td>
-                                <td>{{ $item->Deskripsi }}</td>
+            
                             </tr>
                             @endforeach
                         </tbody>

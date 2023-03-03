@@ -5,23 +5,14 @@
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<div class="d-flex h-100 text-center text-bg-dark">
+    <main class="cover-container d-flex p-3 mx-auto flex-column">
+      <h1>Pilih Empiris</h1>
+      <p class="lead">
+        <a href="/form" class="btn btn-lg btn-secondary fw-bold">Folklore</a>
+        <a href="/home" class="btn btn-lg btn-secondary fw-bold">Get started</a>
+        <a href="/home" class="btn btn-lg btn-secondary fw-bold">Get started</a>
+      </p>
+    </main>
+  </div> 
 @endsection

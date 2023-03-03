@@ -12,6 +12,7 @@
     <!-- Styles -->
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet">
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -29,12 +30,12 @@
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-              <a class="navbar-brand" href="{{ url('/') }}">Resep Obat</a>
+              <a class="navbar-brand" href="{{ url('/home') }}">Resep Obat</a>
 
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto">
                   <li class="nav-item">
-                    <a class="nav-link {{ Request::is('/')?'active':''}} " href="{{ url('/') }}">Home</a>
+                    <a class="nav-link {{ Request::is('/')?'active':''}} " href="{{ url('/home') }}">Home</a>
                   </li>
                   
                   @guest
@@ -50,6 +51,9 @@
                         </li>
                       @endif
                   @else
+                  <li class="nav-item">
+                    <a class="nav-link {{ Request::is('/history')?'active':''}} " href="{{ url('/history') }}">History</a>
+                  </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       {{ Auth::user()->name }}
@@ -78,6 +82,8 @@
         <div class="content">
             @yield('content')
         </div>
+
+        
     </div>
 </body>
 </html>

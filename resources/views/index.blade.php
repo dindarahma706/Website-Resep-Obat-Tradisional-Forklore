@@ -1,73 +1,18 @@
 @extends('layouts.frontend')
 
 @section('title')
-    Home
+  Cover
 @endsection
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8 mt-5">
-            <div class="card">
-                <div class="card-header">{{ __('Cari Resep') }}</div>
+@section('content')  
+<div class="d-flex h-100 text-center text-bg-dark">
+  <main class="cover-container d-flex p-3 mx-auto flex-column">
+    <h1>Cover your page.</h1>
+    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+    <p class="lead">
+      <a href="/register" class="btn btn-lg btn-secondary fw-bold">Get started</a>
+    </p>
+  </main>
+</div>  
 
-                <div class="card-body">
-                    <form method="POST" action="{{ url('result') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="Nama" class="col-md-4 col-form-label text-md-end">{{ __('Nama') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="Nama" type="text" class="form-control" name="Nama" required>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="Umur" class="col-md-4 col-form-label text-md-end">{{ __('Umur') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="Umur" type="number" class="form-control" name="Umur" required>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="Gender" class="col-md-4 col-form-label text-md-end">{{ __('Jenis Kelamin') }}</label>
-
-                            <div class="form-check col-md-3">
-                            <input class="form-check-input" type="radio" name="Gender" id="Gender" value="Laki-Laki" required>
-                            <label class="form-check-label" for="Gender">
-                              Laki-Laki
-                            </label>
-                          </div>
-                          <div class="form-check col-md-3">
-                            <input class="form-check-input" type="radio" name="Gender" id="Gender" value="Perempuan" required>
-                            <label class="form-check-label" for="Gender">
-                              Perempuan
-                            </label>
-                          </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="Penyakit" class="col-md-4 col-form-label text-md-end">{{ __('Penyakit') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="Penyakit" placeholder="demam" type="text" class="form-control" name="Penyakit" required>
-                            </div>
-                        </div>
-
-                        
-
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Submit') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

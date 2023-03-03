@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('title')
-    Hasil
+    Resep
 @endsection
 
 @section('content')
@@ -16,21 +16,27 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Nama Tumbuhan</th>
-                                <th>Gambar</th>
-                                <th>Penyakit</th>
-                                <th>Deskripsi</th>
+                                <th>ID</th>
+                                <th>Nama User</th>
+                                <th>Email</th>
+                                <th>Nomor Whatsapp</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($resep as $item)
                             <tr>
+                                <td>{{ $item->id }}</td>
                                 <td>{{ $item->Nama_Tumbuhan }}</td>
+                                <td>{{ $item->Penyakit }}</td>
+                                <td>{{ $item->Jenis }}</td>
                                 <td>
                                     <img class="img" src="{{ asset('assets/uploads/resep/'.$item->Image) }}" alt="image here..">    
                                 </td>
-                                <td>{{ $item->Penyakit }}</td>
-                                <td>{{ $item->Deskripsi }}</td>
+                                <td>
+                                    <a href="{{ url('edit-resep/'.$item->id) }}" class="btn btn-primary">Edit</a>
+                                    <a href="{{ url('delete-resep/'.$item->id) }}" class="btn btn-danger">Delete</a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
