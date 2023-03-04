@@ -64,17 +64,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if(request()->hasfile('image')){
+            $filename = time() . '.' . request()->image->getClientOriginalExtension();
+            request()->image->move('assets/uploads/sertif/', $filename);
+        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'sertif_image'=>$filename??NULL,
             'password' => Hash::make($data['password']),
         ]);
 
-        $user = User::create($request->all());
-            if($request->hasFile('foto')){
-            $request->file('foto')->move('images/',$request->file('foto')-> getClientOriginalName());
-            $user->foto = $request->file('foto')->getClientOriginalName();
-            $user->save();
-}
+
     }
 }

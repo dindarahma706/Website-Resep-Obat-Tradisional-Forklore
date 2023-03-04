@@ -70,7 +70,7 @@
 
                             <div class="col-md-6">
                         <div class="input-group mb-3">
-                            <input type="file" name="foto" class="form-control" id="inputGroupFile">
+                            <input type="file" name="image" class="form-control" id="inputGroupFile">
                         </div>
                             </div>
                         </div>
