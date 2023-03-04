@@ -75,5 +75,9 @@ class frontendController extends Controller
         return redirect('/resep')->with('status', 'Resep Deleted Succesfully');
     }
 
-    
 }
+
+
+
+
+

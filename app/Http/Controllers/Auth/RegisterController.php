@@ -69,5 +69,12 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $user = User::create($request->all());
+            if($request->hasFile('foto')){
+            $request->file('foto')->move('images/',$request->file('foto')-> getClientOriginalName());
+            $user->foto = $request->file('foto')->getClientOriginalName();
+            $user->save();
+}
     }
 }
