@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('title')
-    Resep
+    Daftar Pengguna
 @endsection
 
 @section('content')
@@ -10,7 +10,7 @@
         <div class="col-md-12">
             <div class="card shadow">
                 <div class="card-header">
-                    <h1>Resep Obat</h1>
+                    <h1>Daftar Pengguna</h1>
                 </div>
                 <div class="card-body">
                     <table class="table">

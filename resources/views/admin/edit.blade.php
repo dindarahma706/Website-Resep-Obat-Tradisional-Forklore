@@ -26,8 +26,8 @@
                                 <input type="text" class="form-control" name="Penyakit" value="{{ $resep->Penyakit }}" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="">Jenis</label>
-                                <input type="text" class="form-control" name="Jenis" value="{{ $resep->Jenis }}" required>
+                                <label for="">Deskripsi</label>
+                                <input type="text" class="form-control" name='Deskripsi' value="{{ $resep->Deskripsi }}" required>
                             </div>
                             <div class="col-md-12">
                                 @if($resep->Image)

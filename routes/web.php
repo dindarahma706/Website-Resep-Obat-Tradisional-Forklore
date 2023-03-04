@@ -31,7 +31,7 @@ Route::middleware( ['auth','verifiedUser'])->group(function () {
     route::get('history', [penyakitController::class, 'History']);
 });
 
-Route::middleware( ['auth','isAdmin'])->group(function () {
+Route::middleware( ['auth','verifiedUser','isAdmin'])->group(function () {
     route::get('resep', [frontendController::class, 'Resep']);
     route::get('users', [frontendController::class, 'Users']);
     route::get('add-resep', [frontendController::class, 'Add']);
@@ -39,6 +39,8 @@ Route::middleware( ['auth','isAdmin'])->group(function () {
     route::get('edit-resep/{id}', [frontendController::class, 'Edit']);
     route::put('update-resep/{id}', [frontendController::class, 'Update']);
     route::get('delete-resep/{id}', [frontendController::class, 'Destroy']);
+    route::get('verify-user/{id}', [frontendController::class, 'VerifyUser']);
+    route::get('block-user/{id}', [frontendController::class, 'BlockUser']);
 
 });
 

@@ -16,21 +16,21 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>No</th>
                                 <th>Nama Tumbuhan</th>
                                 <th>Penyakit</th>
-                                <th>Jenis</th>
+                                <th>Deskripsi</th>>
                                 <th>Gambar</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($resep as $item)
+                            @foreach($resep as $key=>$item)
                             <tr>
-                                <td>{{ $item->id }}</td>
+                                <td>{{ $key+1 }}</td>
                                 <td>{{ $item->Nama_Tumbuhan }}</td>
                                 <td>{{ $item->Penyakit }}</td>
-                                <td>{{ $item->Jenis }}</td>
+                                <td>{{ $item->Deskripsi }}</td>
                                 <td>
                                     <img class="img" src="{{ asset('assets/uploads/resep/'.$item->Image) }}" alt="image here..">    
                                 </td>
