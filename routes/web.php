@@ -25,7 +25,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware( ['auth','auth'])->group(function () {
+Route::middleware( ['auth','verifiedUser'])->group(function () {
     route::get('form', [frontendController::class, 'Form']);
     route::post('result', [penyakitController::class, 'Insert']);
     route::get('history', [penyakitController::class, 'History']);

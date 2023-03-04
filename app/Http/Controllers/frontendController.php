@@ -74,7 +74,19 @@ class frontendController extends Controller
         $resep->delete();
         return redirect('/resep')->with('status', 'Resep Deleted Succesfully');
     }
-
+    public function VerifyUser($id){
+        $user = User::find($id);
+        $user->status='1';
+        $user->update();
+        return redirect('/users')->with('status', 'User Verified Succesfully');
+    }
+    public function BlockUser($id)
+    {
+        $user = User::find($id);
+        $user->status = '0';
+        $user->update();
+        return redirect('/users')->with('status', 'User Verified Succesfully');
+    }
 }
 
 
