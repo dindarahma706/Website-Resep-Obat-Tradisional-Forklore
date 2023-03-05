@@ -25,10 +25,11 @@
                                 <input type="text" class="form-control" name='Penyakit' required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="">Jenis</label>
-                                <input type="text" class="form-control" name="Jenis" required>
+                                <label for="">Deskripsi</label>
+                                <input type="text" class="form-control" name='Deskripsi' required>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6 mb-3">
+                                <label for="">Sertifikat</label>
                                 <input type="file" name="Image" class="form-control" required>
                             </div>
                             <div class="col-md-12">

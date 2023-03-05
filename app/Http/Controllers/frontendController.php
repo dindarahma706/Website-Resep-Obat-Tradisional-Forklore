@@ -36,7 +36,7 @@ class frontendController extends Controller
         }
         $resep->Nama_Tumbuhan = $request->input('Nama_Tumbuhan');
         $resep->Penyakit = $request->input('Penyakit');
-        $resep->Jenis = $request->input('Jenis');
+        $resep->Deskripsi = $request->input('Deskripsi');
         $resep->save();
         return redirect('/resep')->with("status", "Resep Added Succesfully");
 
@@ -60,7 +60,7 @@ class frontendController extends Controller
         }
         $resep->Nama_Tumbuhan = $request->input('Nama_Tumbuhan');
         $resep->Penyakit = $request->input('Penyakit');
-        $resep->Jenis = $request->input('Jenis');
+        $resep->Deskripsi = $request->input('Deskripsi');
         $resep->update();
         return redirect('/resep')->with("status", "Resep Updated Succesfully");
 
@@ -74,7 +74,20 @@ class frontendController extends Controller
         $resep->delete();
         return redirect('/resep')->with('status', 'Resep Deleted Succesfully');
     }
-
+    public function VerifyUser($id){
+        $user = User::find($id);
+        $user->status='1';
+        $user->update();
+        return redirect('/users')->with('status', 'User Verified Succesfully');
+    }
+    public function BlockUser($id)
+    {
+        $user = User::find($id);
+        $user->status = '0';
+        $user->role='0';
+        $user->update();
+        return redirect('/users')->with('status', 'User Verified Succesfully');
+    }
 }
 
 
