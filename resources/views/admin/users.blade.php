@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+<br>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -13,8 +14,8 @@
                     <h1>Daftar Pengguna</h1>
                 </div>
                 <div class="card-body">
-                    <table class="table">
-                        <thead>
+                    <table class="table table-hover">
+                        <thead class="table-dark">
                             <tr>
                                 <th>ID</th>
                                 <th>Nama User</th>
@@ -26,18 +27,18 @@
                         <tbody>
                             @foreach($user as $key=> $item)
                             <tr>
-                                <td>{{ $key +1 }}</td>
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->email }}</td>
-                                <td>
+                                <td class="align-middle">{{ $key +1 }}</td>
+                                <td class="align-middle">{{ $item->name }}</td>
+                                <td class="align-middle">{{ $item->email }}</td>
+                                <td class="align-middle">
                                     <img class="img" src="{{ asset('assets/uploads/sertif/'.$item->sertif_image) }}" alt="image here..">    
                                 </td>
-                                <td>
+                                <td class="align-middle">
                                     @if($item->status==0)
-                                    <a href="{{url('verify-user/'.$item->id)}}" class="btn btn-success">ACC</a>
+                                    <a href="{{url('verify-user/'.$item->id)}}" class="btn btn-success shadow-lg">ACC</a>
                                     @endif
                                     @if($item->status==1)
-                                    <a href="{{url('block-user/'.$item->id)}}" class="btn btn-danger">BLOCK</a>
+                                    <a href="{{url('block-user/'.$item->id)}}" class="btn btn-danger shadow-lg">BLOCK</a>
                                     @endif
 
                                 </td>
