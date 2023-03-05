@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+<br>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -16,13 +17,13 @@
                             <button type="button" class="btn btn-primary" href="{{ url('insert-resep') }}">Tambah</button>
                     </a>-->
                 <div class="card-body">
-                    <table class="table">
-                        <thead>
+                    <table class="table table-hover">
+                        <thead class="table-dark">
                             <tr>
                                 <th>No</th>
                                 <th>Nama Tumbuhan</th>
                                 <th>Penyakit</th>
-                                <th>Deskripsi</th>>
+                                <th>Deskripsi</th>
                                 <th>Gambar</th>
                                 <th>Action</th>
                             </tr>
@@ -38,8 +39,8 @@
                                     <img class="img" src="{{ asset('assets/uploads/resep/'.$item->Image) }}" alt="image here..">    
                                 </td>
                                 <td>
-                                    <a href="{{ url('edit-resep/'.$item->id) }}" class="btn btn-outline-primary">Edit</a>
-                                    <a href="{{ url('delete-resep/'.$item->id) }}" onclick="return confirm('Yakin hapus data?')" class="btn btn-outline-danger">
+                                    <a href="{{ url('edit-resep/'.$item->id) }}" class="btn btn-outline-primary shadow">Edit</a>
+                                    <a href="{{ url('delete-resep/'.$item->id) }}" onclick="return confirm('Yakin hapus data?')" class="btn btn-outline-danger shadow">
                                         Delete
                                     </a>
                                 </td>
