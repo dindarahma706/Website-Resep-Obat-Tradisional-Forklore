@@ -24,6 +24,7 @@ Route::get('/', [frontendController::class, 'Index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/empiris',[App\Http\Controllers\empirisController::class,'index'])->name('empiris');
 
 Route::middleware( ['auth','verifiedUser'])->group(function () {
     route::get('form', [frontendController::class, 'Form']);
