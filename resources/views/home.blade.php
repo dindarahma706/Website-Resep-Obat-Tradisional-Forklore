@@ -11,7 +11,6 @@
       <p class="lead">
         <a href="/form" class="btn btn-lg btn-secondary fw-bold">Folklore</a>
         <a href="/home" class="btn btn-lg btn-secondary fw-bold">Get started</a>
-        <a href="/home" class="btn btn-lg btn-secondary fw-bold">Get started</a>
       </p>
     </main>
   </div> 
