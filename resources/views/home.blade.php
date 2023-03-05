@@ -12,7 +12,7 @@
     margin: 100px 60px 80px 100px;
     font-size: 40px;
   }
-  </style>
+</style>
   <div class="d-flex h-100 text-center" >
     <main class="cover-container d-flex p-3 mx-auto flex-column">
     <p class="lead pt-3">
