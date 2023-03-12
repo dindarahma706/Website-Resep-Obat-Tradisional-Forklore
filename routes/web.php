@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontendController;
 use App\Http\Controllers\penyakitController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +27,12 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/empiris',[App\Http\Controllers\empirisController::class,'index'])->name('empiris');
 Route::view('/addResep', 'addResep');
+Route::post('/bahan', function(Request $request){
+    return 'halo';
+});
 Route::middleware( ['auth','verifiedUser'])->group(function () {
     route::get('form', [frontendController::class, 'Form']);
+    route::post('submision', [frontendController::class, 'Submision']);
     route::post('result', [penyakitController::class, 'Insert']);
     route::get('history', [penyakitController::class, 'History']);
 });

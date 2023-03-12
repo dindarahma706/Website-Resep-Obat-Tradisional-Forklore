@@ -6,6 +6,87 @@
 
 @section('css')
     <link href="{{ asset('frontend/css/form.css') }}" rel="stylesheet">
+<style>
+body {
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  background-color: #efefef; }
+
+p {
+  color: #b3b3b3;
+  font-weight: 300; }
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+
+a {
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease; }
+  a, a:hover {
+    text-decoration: none !important; }
+
+.content {
+  padding: 7rem 0; }
+
+h2 {
+  font-size: 20px; }
+
+.ms-options {
+  padding: 20px;
+  border: none; }
+
+.ms-options-wrap > button:focus, .ms-options-wrap > button {
+  border-radius: 4px;
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
+  -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+  border: none !important;
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  z-index: 2; }
+  .ms-options-wrap > button:focus:hover, .ms-options-wrap > button:hover {
+    -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1); }
+  .ms-options-wrap > button:focus:after, .ms-options-wrap > button:after {
+    right: 10px; }
+  .ms-options-wrap > button:focus:active, .ms-options-wrap > button:focus:focus, .ms-options-wrap > button:active, .ms-options-wrap > button:focus {
+    outline: none; }
+
+.ms-options-wrap.ms-active > button:focus, .ms-options-wrap.ms-active > button {
+  -webkit-box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.1); }
+
+.ms-options-wrap > .ms-options {
+  z-index: 1;
+  margin-top: 12px;
+  border: none !important;
+  -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 4px; }
+  .ms-options-wrap > .ms-options .ms-search input {
+    border-bottom: 1px solid #efefef; }
+  .ms-options-wrap > .ms-options .ms-selectall {
+    color: #aaaaaa;
+    text-transform: uppercase;
+    font-size: 11px; }
+    .ms-options-wrap > .ms-options .ms-selectall:hover {
+      color: #000; }
+  .ms-options-wrap > .ms-options > ul li.selected label {
+    border-radius: 4px;
+    background: #e1f2fb; }
+  .ms-options-wrap > .ms-options > ul li label {
+    border-radius: 4px;
+    border: none;
+    padding-top: 5px;
+    padding-bottom: 5px; }
+  .ms-options-wrap > .ms-options > ul li:hover label {
+    border: none;
+    background: #f7f7f7; }
+</style>
 @endsection
 
 @section('content')
@@ -20,7 +101,7 @@
                         <span class="form-stepper-circle">
                             <span>1</span>
                         </span>
-                        <div class="label">Pilih Bahan 1</div>
+                        <div class="label">Tentang Resep</div>
                     </a>
                 </li>
                 <!-- Step 2 -->
@@ -29,110 +110,67 @@
                         <span class="form-stepper-circle text-muted">
                             <span>2</span>
                         </span>
-                        <div class="label text-muted">Pilih Bahan 2</div>
-                    </a>
-                </li>
-                <!-- Step 3 -->
-                <li class="form-stepper-unfinished text-center form-stepper-list" step="3">
-                    <a class="mx-2">
-                        <span class="form-stepper-circle text-muted">
-                            <span>3</span>
-                        </span>
-                        <div class="label text-muted">Pilih Bahan 3</div>
+                        <div class="label text-muted">Pilih Bahan</div>
                     </a>
                 </li>
             </ul>
             <!-- Step Wise Form Content -->
-            <form action="{{ url('result') }}" id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST">
+            <form action="{{ url('submision') }}" id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST">
                 @csrf
                 <!-- Step 1 Content -->
                 <section id="step-1" class="form-step">
-                    <h2 class="font-normal">Masukkan bahan utama</h2>
+                    <h2 class="font-normal">Judul Resep</h2>
                     <!-- Step 1 input fields -->
                     <div class="mt-3">
-                        <input id="" type="text" class="form-control" name="bahan1" required>
+                        <input id="" type="text" class="form-control" name="judul" required>
+                    </div>
+
+                    <h2 class="font-normal">Penyakit</h2>
+                    <!-- Step 1 input fields -->
+                    <div class="mt-3">
+                        <input id="" type="text" class="form-control" name="penyakit" required>
                     </div>
                     <div class="mt-3">
                         <button class="button btn-navigate-form-step" type="button" step_number="2">Next</button>
                     </div>
-                    <div class="mt-3">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Pilihan Bahan utama</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($racik1 as $item)
-                                <tr>
-                                    <td>{{ $item->bahan1 }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
                 </section>
                 <!-- Step 2 Content, default hidden on page load. -->
                 <section id="step-2" class="form-step d-none">
-                    <h2 class="font-normal">Masukkan bahan tambahan (opsional)</h2>
-                    <!-- Step 2 input fields -->
-                    <div class="mt-3">
-                        <input  type="text" class="form-control" name="bahan2">
-                    </div>
+                    <h2 class="font-normal">Masukkan bahan utama</h2>
+                    <select name="id_bahan[]" multiple="multiple" class="3col active form-control">\
+                        @foreach($bahan as $item)
+                        <option value="{{$item->id}}">{{$item->Nama_Tumbuhan}}</option>
+                        @endforeach
+
+                    </select>
                     <div class="mt-3">
                         <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
-                        <button class="button btn-navigate-form-step" type="button" step_number="3">Next</button>
+                        <button class="button btn-navigate-form-step" type="submit" >Simpan</button>
                     </div>
-                    <div class="mt-3">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Pilihan Bahan tambahan</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($racik2 as $item)
-                                <tr>
-                                    <td>{{ $item->bahan2 }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-                <!-- Step 3 Content, default hidden on page load. -->
-                <section id="step-3" class="form-step d-none">
-                    <h2 class="font-normal">Masukkan bahan tambahan lainnya (opsional)</h2>
-                    <!-- Step 3 input fields -->
-                    <div class="mt-3">
-                        <input  id="" type="text" class="form-control" name="bahan3">
-                    </div>
-                    <div class="mt-3">
-                        <button class="button btn-navigate-form-step" type="button" step_number="2">Prev</button>
-                        <button class="button submit-btn" type="submit">Save</button>
-                    </div>
-                    <div class="mt-3">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Pilihan bahan tamabahan lainnya</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($racik3 as $item)
-                                <tr>
-                                    <td>{{ $item->bahan3 }}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+
                 </section>
             </form>
         </div>
     </div>
+<script src="{{asset('frontend/js/jquery.js')}}"></script>
+<script src="{{asset('frontend/js/popper.min.js')}}"></script>
+<script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('frontend/js/jquery.multiselect.js')}}"></script>
+
 
 <script>
+    // Multi select
+    $('select[multiple].active.3col').multiselect({
+	  columns: 2,
+	  placeholder: 'Pilih Bahan Herbal',
+	  search: true,
+	  searchOptions: {
+	      'default': 'Cari Bahan'
+	  },
+	  selectAll: false
+
+	});
+
     const navigateToFormStep = (stepNumber) => {
     /**
      * Hide all form steps.

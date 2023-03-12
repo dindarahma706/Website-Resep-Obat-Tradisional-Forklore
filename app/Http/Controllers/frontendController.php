@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Resep;
 use App\Models\User;
 use App\Models\Craft;
+use App\Models\ResepNew;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -19,7 +20,8 @@ class frontendController extends Controller
         $racik1 = Craft::select('bahan1')->distinct()->get();
         $racik2 = Craft::select('bahan2')->distinct()->get();
         $racik3 = Craft::select('bahan3')->distinct()->get();
-        return view('form', compact('racik1', 'racik2', 'racik3'));
+        $bahan=Resep::select('*')->distinct()->get();
+        return view('form', compact('racik1', 'racik2', 'racik3', 'bahan'));
     }
     function Users(){
         $user = User::all();
@@ -47,6 +49,12 @@ class frontendController extends Controller
         $resep->save();
         return redirect('/resep')->with("status", "Resep Added Succesfully");
 
+    }
+    public function Submision(Request $request){
+        $input=$request->all();
+        ResepNew::create($input);
+        return "berhasil input";
+        
     }
     public function Edit($id){
         $resep = Resep::find($id);
