@@ -86,7 +86,8 @@ class frontendController extends Controller
         
 
         // ResepNew::create($input);
-        return "berhasil input";
+        return redirect('/daftar-resep');
+
         
     }
     public function Edit($id){
