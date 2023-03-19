@@ -1,17 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\bahanResep;
 use App\Models\Resep;
 use App\Models\User;
 use App\Models\Craft;
 use App\Models\ResepNew;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Yajra\Datatables\Datatables;
 
 class frontendController extends Controller
 {
     function Index(){
         return view('index');
+    }
+    function getResep(Request $request){
+        $data = ResepNew::select('judul', 'penyakit', 'id')
+                ->where('judul','LIKE','%'.$request->input('keyword').'%')
+                ->orwhere('penyakit','LIKE','%'.$request->input('keyword').'%')
+                ->orderBy('judul','ASC')
+                ->get();
+        return view('resep.cari', ['data'=>$data]);
     }
 //     function Form(){
 //         return view('form');
@@ -52,7 +63,29 @@ class frontendController extends Controller
     }
     public function Submision(Request $request){
         $input=$request->all();
-        ResepNew::create($input);
+        // Add Resep
+        $resep= new ResepNew;
+        $resep->judul=$input['judul'];
+        $resep->penyakit=$input['penyakit'];
+        $resep->cara_pembuatan=$input['cara_pembuatan'];
+        $resep->save();
+
+        $id_resep=ResepNew::select('id')
+                ->orderBy('id','DESC')
+                ->first();
+        $id_bahan= $input['id_bahan'];
+        // return $id_bahan;
+        // Tambah Bahan Resep
+        foreach ($id_bahan as $value) {
+            $bahanResep = new bahanResep;
+            $bahanResep->id_resep=$id_resep->id;
+            $bahanResep->id_bahan=$value;
+            $bahanResep->save();
+        }
+
+        
+
+        // ResepNew::create($input);
         return "berhasil input";
         
     }
@@ -60,6 +93,20 @@ class frontendController extends Controller
         $resep = Resep::find($id);
         return view('admin.edit', compact('resep'));
     }
+
+    public function detailResep($id){
+        $resep = ResepNew::select('*')
+                ->where('id', $id)
+                ->first();
+        $bahan = Resep::select("resep.*")
+                ->join('bahan_reseps', 'resep.id','=','bahan_reseps.id_bahan')
+                ->where('bahan_reseps.id_resep','=',$id)
+                ->get();
+        
+        return view('resep.detail',['resep'=>$resep,'bahan'=>$bahan]);
+        
+    }
+
     public function Update(Request $request, $id){
         $resep = Resep::find($id);
         if($request->hasFile('Image')){

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ResepNew extends Model
 {
     use HasFactory;
-    protected $fillable = ['judul', 'penyakit', 'id_bahan'];
+    protected $fillable = ['judul', 'penyakit', 'cara_pembuatan'];
 
     /**
      * Set the categories

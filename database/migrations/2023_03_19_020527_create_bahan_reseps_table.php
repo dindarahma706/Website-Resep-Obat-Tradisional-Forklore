@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('resep_news', function (Blueprint $table) {
-            $table->id();
-            $table->string('judul', 120);
-            $table->string('penyakit');
-            $table->longText('cara_pembuatan')->nullable();
-            $table->timestamps();
+        Schema::create('bahan_reseps', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_resep');
+            $table->unsignedBigInteger('id_bahan');
         });
     }
 
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('resep_news');
+        Schema::dropIfExists('bahan_reseps');
     }
 };

@@ -91,7 +91,7 @@ h2 {
 
 @section('content')
     <div>
-        <h1>Racik Resep</h1>
+        <h1 class="text-dark">Racik Resep</h1>
         <div id="multi-step-form-container">
             <!-- Form Steps / Progress Bar -->
             <ul class="form-stepper form-stepper-horizontal text-center mx-auto pl-0">
@@ -115,7 +115,7 @@ h2 {
                 </li>
             </ul>
             <!-- Step Wise Form Content -->
-            <form action="{{ url('submision') }}" id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST">
+            <form class="text-dark" action="{{ url('submision') }}" id="userAccountSetupForm" name="userAccountSetupForm" enctype="multipart/form-data" method="POST">
                 @csrf
                 <!-- Step 1 Content -->
                 <section id="step-1" class="form-step">
@@ -136,13 +136,23 @@ h2 {
                 </section>
                 <!-- Step 2 Content, default hidden on page load. -->
                 <section id="step-2" class="form-step d-none">
-                    <h2 class="font-normal">Masukkan bahan utama</h2>
-                    <select name="id_bahan[]" multiple="multiple" class="3col active form-control">\
-                        @foreach($bahan as $item)
-                        <option value="{{$item->id}}">{{$item->Nama_Tumbuhan}}</option>
-                        @endforeach
-
-                    </select>
+                  <div class="row">
+                    <div class="col">
+                      <h2 class="font-normal">Masukkan bahan utama</h2>
+                      <select name="id_bahan[]" multiple="multiple" class="3col active form-control">\
+                          @foreach($bahan as $item)
+                          <option value="{{$item->id}}">{{$item->Nama_Tumbuhan}}</option>
+                          @endforeach
+  
+                      </select>
+                    </div>
+                    <div class="col">
+                      <h2 class="h5 mb-4">Cara Pembuatan</h2>
+                      <div class="form-group">
+                          <textarea id="my-editor" name="cara_pembuatan" class="form-control"></textarea>
+                      </div>
+                    </div>
+                  </div>
                     <div class="mt-3">
                         <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>
                         <button class="button btn-navigate-form-step" type="submit" >Simpan</button>
@@ -157,6 +167,19 @@ h2 {
 <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('frontend/js/jquery.multiselect.js')}}"></script>
 
+<!-- CKEditor -->
+<script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<script>
+    var options = {
+        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token='+document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='+document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    };
+</script>
+<script>
+    CKEDITOR.replace('my-editor', options);
+</script>
 
 <script>
     // Multi select

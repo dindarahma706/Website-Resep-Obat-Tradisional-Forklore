@@ -20,5 +20,5 @@
       <a href="/home" class="button btn btn-lg btn-secondary fw-bold">Scientics</a>
     </p>
     </main>
-  </div>
+  </div>  
 @endsection

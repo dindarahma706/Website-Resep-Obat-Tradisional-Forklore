@@ -17,7 +17,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', [frontendController::class, 'Index']);
+Route::get('/', [frontendController::class, 'Index'])->name('index');
+Route::get('/get-resep', [frontendController::class, 'getResep'])->name('get.resep');
 //route::get('result', [penyakitController::class, 'Result']);
 
 
@@ -26,12 +27,15 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/empiris',[App\Http\Controllers\empirisController::class,'index'])->name('empiris');
-Route::view('/addResep', 'addResep');
+Route::view('/addResep', 'addResep')->name('addResep');
+Route::get('/daftar-resep',[frontendController::class,'getResep'])->name('resep-default');
+Route::get('resep/{id}',[frontendController::class,'detailResep'])->name('detailResep');
+
 Route::post('/bahan', function(Request $request){
     return 'halo';
 });
 Route::middleware( ['auth','verifiedUser'])->group(function () {
-    route::get('form', [frontendController::class, 'Form']);
+    route::get('form', [frontendController::class, 'Form'])->name('form-resep');
     route::post('submision', [frontendController::class, 'Submision']);
     route::post('result', [penyakitController::class, 'Insert']);
     route::get('history', [penyakitController::class, 'History']);
