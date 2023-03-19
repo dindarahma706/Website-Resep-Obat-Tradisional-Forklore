@@ -66,13 +66,17 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                       @if (Auth::user()->status=='1')
                       <li>
-                        <a href="{{ route('home') }}" class="dropdown-item">Tambah Resep</a>
+                        <a href="{{ route('get.resep') }}" class="dropdown-item">Lihat Resep</a>
                       </li> 
                       <li>
-                        <a href="{{ route('get.resep') }}" class="dropdown-item">Lihat Resep</a>
+                        <a href="{{ route('home') }}" class="dropdown-item">Tambah Resep</a>
                       </li> 
                       @endif
                       @if (Auth::user()->role_as == '1')
+                      <li>
+                        <a href="{{ url('/resep') }}" class="dropdown-item">Lihat Bahan</a>
+                      </li>  
+
                       <li>
                         <a href="{{ url('/add-resep') }}" class="dropdown-item">Tambahkan Bahan</a>
                       </li>  
