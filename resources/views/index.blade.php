@@ -31,13 +31,16 @@
     <div class="d-flex h-100 text-center" >
       <main class="cover-container d-flex p-3 mx-auto flex-column">
       <p class="lead pt-3">
+        
         <a href="{{route('resep-default')}}" class="button btn btn-lg btn-secondary fw-bold">Cari Resep</a>
-        @if(Auth::user()->status='1')
-        <a href="{{route('home')}}" class="button btn btn-lg btn-secondary fw-bold">Buat Resep</a>
-        @endif
-        @if(Auth::user()->role_as='1')
-        <a href="{{url('add-resep')}}" class="button btn btn-lg btn-secondary fw-bold">Tambah Bahan</a>
-        @endif
+        @auth
+          @if(Auth::user()->status=='1')
+          <a href="{{route('home')}}" class="button btn btn-lg btn-secondary fw-bold">Buat Resep</a>
+          @endif
+          @if(Auth::user()->role_as='1')
+          <a href="{{url('add-resep')}}" class="button btn btn-lg btn-secondary fw-bold">Tambah Bahan</a>
+          @endif
+        @endauth
       </p>
       </main>
     </div>

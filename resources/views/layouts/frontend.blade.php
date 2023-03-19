@@ -56,23 +56,22 @@
                         </li>
                       @endif
                   @else
-
                   {{-- <li class="nav-item">
                     <a class="nav-link {{ Request::is('/history')?'active':''}} " href="{{ url('/history') }}">History</a>
                   </li> --}}
                   <li class="nav-item dropdown">
-                    @if (Auth::user()->status='1')
-                    <li>
-                      <a href="{{ route('home') }}" class="dropdown-item">Tambah Resep</a>
-                    </li> 
-                    <li>
-                      <a href="{{ route('get.resep') }}" class="dropdown-item">Lihat Resep</a>
-                    </li> 
-                    @endif
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       {{ Auth::user()->name }}
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      @if (Auth::user()->status=='1')
+                      <li>
+                        <a href="{{ route('home') }}" class="dropdown-item">Tambah Resep</a>
+                      </li> 
+                      <li>
+                        <a href="{{ route('get.resep') }}" class="dropdown-item">Lihat Resep</a>
+                      </li> 
+                      @endif
                       @if (Auth::user()->role_as == '1')
                       <li>
                         <a href="{{ url('/add-resep') }}" class="dropdown-item">Tambahkan Bahan</a>
