@@ -119,13 +119,13 @@ h2 {
                 @csrf
                 <!-- Step 1 Content -->
                 <section id="step-1" class="form-step">
-                    <h2 class="font-normal">Judul Resep</h2>
+                    <h2 class="">Judul Resep</h2>
                     <!-- Step 1 input fields -->
                     <div class="mt-3">
                         <input id="" type="text" class="form-control" name="judul" required>
                     </div>
 
-                    <h2 class="font-normal">Penyakit</h2>
+                    <h2 class="">Penyakit</h2>
                     <!-- Step 1 input fields -->
                     <div class="mt-3">
                         <input id="" type="text" class="form-control" name="penyakit" required>
@@ -138,7 +138,7 @@ h2 {
                 <section id="step-2" class="form-step d-none">
                   <div class="row">
                     <div class="col">
-                      <h2 class="font-normal">Masukkan bahan utama</h2>
+                      <h2 class="">Masukkan bahan utama</h2>
                       <select name="id_bahan[]" multiple="multiple" class="3col active form-control">\
                           @foreach($bahan as $item)
                           <option value="{{$item->id}}">{{$item->Nama_Tumbuhan}}</option>
@@ -147,11 +147,17 @@ h2 {
                       </select>
                     </div>
                     <div class="col">
+                      <h2 class="">Gambar Obat</h2>
+                      <div class="mt-3">
+                          <input id="" type="file" class="form-control" name="photo" >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
                       <h2 class="h5 mb-4">Cara Pembuatan</h2>
                       <div class="form-group">
                           <textarea id="my-editor" name="cara_pembuatan" class="form-control"></textarea>
                       </div>
-                    </div>
                   </div>
                     <div class="mt-3">
                         <button class="button btn-navigate-form-step" type="button" step_number="1">Prev</button>

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('judul', 120);
             $table->string('penyakit');
             $table->longText('cara_pembuatan')->nullable();
+            $table->string('photo')->nullable();    
             $table->timestamps();
         });
     }

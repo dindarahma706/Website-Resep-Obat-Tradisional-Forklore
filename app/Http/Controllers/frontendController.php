@@ -68,6 +68,18 @@ class frontendController extends Controller
         $resep->judul=$input['judul'];
         $resep->penyakit=$input['penyakit'];
         $resep->cara_pembuatan=$input['cara_pembuatan'];
+
+        if($request->hasFile('photo')){
+            $path = 'assets/uploads/resep/'.$resep->photo;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+            $file = $request->file('photo');
+            $ext = $file->getClientOriginalExtension();
+            $filename = time().'.'.$ext;
+            $file->move('assets/uploads/resep/',$filename);
+            $resep->photo = $filename;
+        }        
         $resep->save();
 
         $id_resep=ResepNew::select('id')

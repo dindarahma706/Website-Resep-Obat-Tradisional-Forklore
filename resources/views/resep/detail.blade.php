@@ -10,10 +10,12 @@
       <div class="col-lg-8">
         <h1 class="mb-3">{{$resep->judul}}</h1>
         <h4 class="mb-3">Penyakit: {{$resep->penyakit}}</h4>
-
+        <img src="{{asset('assets/uploads/resep/'.$resep->photo)}}" class="img-thumbnail rounded mx-auto d-block" alt="gambar resep" width="30%">
         <p class="mb-4">
             {!! $resep->cara_pembuatan !!}
         </p>
+
+
       </div>
       <div class="col-lg-4 text-dark">
           <h5 class="card-title">Bahan yang dibutuhkan</h5>
