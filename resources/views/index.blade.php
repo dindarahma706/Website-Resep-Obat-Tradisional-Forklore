@@ -37,7 +37,7 @@
           @if(Auth::user()->status=='1')
           <a href="{{route('home')}}" class="button btn btn-lg btn-secondary fw-bold">Buat Resep</a>
           @endif
-          @if(Auth::user()->role_as='1')
+          @if(Auth::user()->role_as=='1')
           <a href="{{url('add-resep')}}" class="button btn btn-lg btn-secondary fw-bold">Tambah Bahan</a>
           @endif
         @endauth
