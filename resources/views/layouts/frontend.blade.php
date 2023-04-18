@@ -74,7 +74,7 @@
                       @endif
                       @if (Auth::user()->role_as == '1')
                       <li>
-                        <a href="{{ url('/resep') }}" class="dropdown-item">Lihat Bahan</a>
+                        <a href="{{ url('/bahan') }}" class="dropdown-item">Lihat Bahan</a>
                       </li>  
 
                       <li>

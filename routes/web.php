@@ -42,7 +42,7 @@ Route::middleware( ['auth','verifiedUser'])->group(function () {
 });
 
 Route::middleware( ['auth','verifiedUser','isAdmin'])->group(function () {
-    route::get('resep', [frontendController::class, 'Resep']);
+    route::get('bahan', [frontendController::class, 'daftarBahan'])->name('daftar-bahan');
     route::get('users', [frontendController::class, 'Users']);
     route::get('add-resep', [frontendController::class, 'Add']);
     route::post('insert-resep', [frontendController::class, 'Insert']);

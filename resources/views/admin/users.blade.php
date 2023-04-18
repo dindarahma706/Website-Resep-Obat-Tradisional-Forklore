@@ -11,7 +11,7 @@
         <div class="col-md-12">
             <div class="card shadow">
                 <div class="card-header">
-                    <h1>Daftar Pengguna</h1>
+                    <h1 style="color:black">Daftar Pengguna</h1>
                 </div>
                 <div class="card-body">
                     <table class="table table-hover">

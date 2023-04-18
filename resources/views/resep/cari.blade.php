@@ -10,10 +10,13 @@
         <form action="{{route('resep-default')}}" method="get">
             <div class="col-md-8">
                 
-                <div class="search">
-                    <i class="bi bi-search"></i>
-                    <input type="text" name="keyword" class="form-control" placeholder="Cari Resep">
-                    <button class="btn btn-primary" type="submit">Search</button>
+                <div class="search row mb-1">
+                    <div class="col-9">
+                        <input type="text" name="keyword" class="form-control" placeholder="Cari Resep" value="{{$keyword}}">
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-primary form-control" type="submit">Search</button>
+                    </div>
                 </div>
                 
             </div>
@@ -24,7 +27,7 @@
         <div class="col-md-12">
             <div class="card shadow">
                 <div class="card-header">
-                    <h1>Resep Obat</h1>
+                    <h1 style="color:#000000">Resep Obat</h1>
                 </div>
                 <div class="card-body">
                     <table class="table">

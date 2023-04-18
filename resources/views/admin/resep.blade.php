@@ -7,11 +7,28 @@
 @section('content')
 <br>
 <div class="container">
+    <div class="row height d-flex justify-content-center align-items-center">
+        <form action="{{route('daftar-bahan')}}" method="get">
+            <div class="col-md-8">
+                
+                <div class="search row mb-1">
+                    <div class="col-9">
+                        <input type="text" name="keyword" class="form-control" placeholder="Cari Bahan" value="{{$keyword}}">
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-primary form-control" type="submit">Search</button>
+                    </div>
+                </div>
+                
+            </div>
+        </form>
+    </div>    
+
     <div class="row">
         <div class="col-md-12">
             <div class="card shadow">
                 <div class="card-header">
-                    <h1>Resep Obat</h1>
+                    <h1 style="color:black">Daftar Bahan</h1>
                 </div>
                     <!--<a class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button type="button" class="btn btn-primary" href="{{ url('insert-resep') }}">Tambah</button>
@@ -52,6 +69,7 @@
             </div>
         </div>
     </div>
-</div>
-    
+    <div class="mt-2">
+        {!! $resep->withQueryString()->links('pagination::bootstrap-5') !!}</div>
+    </div>
 @endsection

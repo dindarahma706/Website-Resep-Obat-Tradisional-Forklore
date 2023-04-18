@@ -22,7 +22,8 @@ class frontendController extends Controller
                 ->orwhere('penyakit','LIKE','%'.$request->input('keyword').'%')
                 ->orderBy('judul','ASC')
                 ->get();
-        return view('resep.cari', ['data'=>$data]);
+        $keyword=$request->input('keyword');
+        return view('resep.cari', ['data'=>$data,'keyword'=>$keyword]);
     }
 //     function Form(){
 //         return view('form');
@@ -38,9 +39,13 @@ class frontendController extends Controller
         $user = User::all();
         return view('admin.users', compact('user'));
     }
-    public function Resep(){
-        $resep = Resep::all();
-        return view('admin.resep', compact('resep'));
+    public function daftarBahan(Request $request){
+        $keyword=$request->input('keyword');
+        $resep = Resep::select('*')
+                        ->where('Nama_tumbuhan','LIKE','%'.$keyword.'%')
+                        ->orwhere('Penyakit', 'LIKE', '%' . $keyword . '%')
+                        ->paginate(10);
+        return view('admin.resep', ['resep'=>$resep,'keyword'=>$keyword]);
     }
     public function Add(){
         return view('admin.add');
@@ -58,7 +63,7 @@ class frontendController extends Controller
         $resep->Penyakit = $request->input('Penyakit');
         $resep->Deskripsi = $request->input('Deskripsi');
         $resep->save();
-        return redirect('/resep')->with("status", "Resep Added Succesfully");
+        return redirect('/bahan')->with("status", "Resep Added Succesfully");
 
     }
     public function Submision(Request $request){
@@ -137,7 +142,7 @@ class frontendController extends Controller
         $resep->Penyakit = $request->input('Penyakit');
         $resep->Deskripsi = $request->input('Deskripsi');
         $resep->update();
-        return redirect('/resep')->with("status", "Resep Updated Succesfully");
+        return redirect('/bahan')->with("status", "Bahan Updated Succesfully");
 
     }
     public function Destroy($id){
@@ -147,7 +152,7 @@ class frontendController extends Controller
             File::delete($path);
         //}
         $resep->delete();
-        return redirect('/resep')->with('status', 'Resep Deleted Succesfully');
+        return redirect('/bahan')->with('status', 'Resep Deleted Succesfully');
     }
     public function VerifyUser($id){
         $user = User::find($id);

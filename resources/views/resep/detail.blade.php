@@ -18,16 +18,18 @@
 
       </div>
       <div class="col-lg-4 text-dark">
-          <h5 class="card-title">Bahan yang dibutuhkan</h5>
-        @foreach ($bahan as $item)
-            <div class="card mb-4">
-                <img src="{{ asset('assets/uploads/resep/'.$item->Image) }}" class="card-img-top" alt="Card Image" style="max-height: 200px;width:auto">
-                <div class="card-body">
-                    <h5 class="card-title">{{$item->Nama_Tumbuhan}}</h5>
-                    <p class="card-text">{{$item->Deskripsi}}</p>
-                </div>
-            </div>            
-        @endforeach
+          <h5 class="card-title" style="color: #ffffff">Bahan yang dibutuhkan:</h5>
+          <div class="row">
+            @foreach ($bahan as $item)
+                <div class="card mb-4 col-lg-5 col-md-8 col-sm-10 m-1">
+                    <img src="{{ asset('assets/uploads/resep/'.$item->Image) }}" class="card-img-top" alt="Card Image" style="max-height: 200px;width:auto">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$item->Nama_Tumbuhan}}</h5>
+                        <p class="card-text">{{$item->Deskripsi}}</p>
+                    </div>
+                </div>            
+            @endforeach
+          </div>
       </div>
     </div>
   </div>
