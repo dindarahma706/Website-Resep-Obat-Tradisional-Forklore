@@ -1,0 +1,4 @@
+name,email,password,role_as,status
+pengunjung,pengunjung@gmail.com,pengunjung123,0,0
+peracik,peracik@gmail.com,peracik123,0,1
+admin,admin@gmail.com,admin123,1,1
