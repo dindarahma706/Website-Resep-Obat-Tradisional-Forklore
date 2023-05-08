@@ -51,6 +51,9 @@ Route::middleware( ['auth','verifiedUser','isAdmin'])->group(function () {
     route::get('delete-resep/{id}', [frontendController::class, 'Destroy']);
     route::get('verify-user/{id}', [frontendController::class, 'VerifyUser']);
     route::get('block-user/{id}', [frontendController::class, 'BlockUser']);
-
 });
-
+//API
+route::get('api/ingredient', [frontendController::class, 'daftarBahanAPI']);
+route::get('api/ingredient/{pk}',[frontendController::class,'detailBahanAPI']);
+route::get('api/medicine/{pk}',[frontendController::class, 'detailResepAPI']);
+route::get('api/medicine', [frontendController::class, 'detailResepAPI']);

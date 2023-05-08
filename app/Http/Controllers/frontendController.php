@@ -25,6 +25,16 @@ class frontendController extends Controller
         $keyword=$request->input('keyword');
         return view('resep.cari', ['data'=>$data,'keyword'=>$keyword]);
     }
+    function getResepAPI(Request $request)
+    {
+        // $data=ResepNew::select('resep_news.id as id')
+        //             -> leftJoin('');
+
+        // return response()->json([
+
+        // ]);
+        
+    }
 //     function Form(){
 //         return view('form');
 //     }
@@ -46,6 +56,26 @@ class frontendController extends Controller
                         ->orwhere('Penyakit', 'LIKE', '%' . $keyword . '%')
                         ->paginate(10);
         return view('admin.resep', ['resep'=>$resep,'keyword'=>$keyword]);
+    }
+    public function daftarBahanAPI(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $bahan = Resep::select('resep.id as id','resep.Nama_tumbuhan as name','resep.Image as image')
+        ->get();
+
+        return $bahan;
+        return response()->json($bahan);
+        // return view('admin.resep', ['resep' => $resep, 'keyword' => $keyword]);
+    }
+    public function detailBahanAPI(Request $request,$pk)
+    {
+        $keyword = $request->input('keyword');
+        $bahan = Resep::select('*')
+                        ->where('id','=',$pk)
+                        ->first();
+        return $bahan;
+        return response()->json($bahan);
+        // return view('admin.resep', ['resep' => $resep, 'keyword' => $keyword]);
     }
     public function Add(){
         return view('admin.add');
@@ -124,7 +154,25 @@ class frontendController extends Controller
         return view('resep.detail',['resep'=>$resep,'bahan'=>$bahan]);
         
     }
-
+    public function detailResepAPI($pk)
+    {
+        $resep = ResepNew::select('*')
+            ->where('id', $pk)
+            ->first();
+        $bahan = Resep::select("resep.id as id", 'resep.Nama_Tumbuhan as name', 'resep.Image as image')
+            ->join('bahan_reseps', 'resep.id', '=', 'bahan_reseps.id_bahan')
+            ->where('bahan_reseps.id_resep', '=', $pk)
+            ->get();
+        return response()->json([
+            'id'=>$resep['id'],
+            'name'=>$resep['judul'],
+            'image'=>$resep['photo'],
+            'description'=>$resep['cara_pembuatan'],
+            'ingredients'=>$bahan,
+            
+        ]);
+        // return view('resep.detail', ['resep' => $resep, 'bahan' => $bahan]);
+    }
     public function Update(Request $request, $id){
         $resep = Resep::find($id);
         if($request->hasFile('Image')){
