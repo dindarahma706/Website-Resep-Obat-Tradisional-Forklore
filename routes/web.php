@@ -56,4 +56,4 @@ Route::middleware( ['auth','verifiedUser','isAdmin'])->group(function () {
 route::get('api/ingredient', [frontendController::class, 'daftarBahanAPI']);
 route::get('api/ingredient/{pk}',[frontendController::class,'detailBahanAPI']);
 route::get('api/medicine/{pk}',[frontendController::class, 'detailResepAPI']);
-route::get('api/medicine', [frontendController::class, 'detailResepAPI']);
+route::get('api/medicine', [frontendController::class, 'getResepAPI']);
