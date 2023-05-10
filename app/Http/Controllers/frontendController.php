@@ -39,6 +39,10 @@ class frontendController extends Controller
                         ->join('bahan_reseps', 'resep.id', '=', 'bahan_reseps.id_bahan')
                         ->where('bahan_reseps.id_resep', '=', $resep['id'])
                         ->get();
+            foreach($ingredients as $ingredient){
+                $ingredient['image']=public_path('assets/uploads/resep/'.$ingredient['image']);
+            }
+            $resep['image']=public_path('assets/uploads/resep/'.$resep['image']);
             $resep['ingredients']=$ingredients;
         }
         return $data;
@@ -72,6 +76,9 @@ class frontendController extends Controller
         $keyword = $request->input('keyword');
         $bahan = Resep::select('resep.id as id','resep.Nama_tumbuhan as name','resep.Image as image')
         ->get();
+        foreach ($bahan as $item) {
+            $item['image'] = public_path('assets/uploads/resep/' . $item['image']);
+        }
 
         return $bahan;
         // return view('admin.resep', ['resep' => $resep, 'keyword' => $keyword]);
@@ -82,6 +89,8 @@ class frontendController extends Controller
         $bahan = Resep::select("resep.id as id", 'resep.Nama_Tumbuhan as name', 'resep.Image as image')
                         ->where('id','=',$pk)
                         ->first();
+        $bahan['image'] = public_path('assets/uploads/resep/' . $bahan['image']);
+
         return $bahan;
         // return view('admin.resep', ['resep' => $resep, 'keyword' => $keyword]);
     }
@@ -167,10 +176,16 @@ class frontendController extends Controller
         $resep = ResepNew::select('id', 'judul as name', 'photo as image', 'cara_pembuatan as description')
             ->where('id', $pk)
             ->first();
+        $resep['image'] = public_path('assets/uploads/resep/' . $resep['image']);
+
         $bahan = Resep::select("resep.id as id", 'resep.Nama_Tumbuhan as name', 'resep.Image as image')
             ->join('bahan_reseps', 'resep.id', '=', 'bahan_reseps.id_bahan')
             ->where('bahan_reseps.id_resep', '=', $pk)
             ->get();
+        foreach ($bahan as $item) {
+            $item['image'] = public_path('assets/uploads/resep/' . $item['image']);
+        }
+
         $resep['ingredients']=$bahan;
         return $resep;
         // return view('resep.detail', ['resep' => $resep, 'bahan' => $bahan]);
